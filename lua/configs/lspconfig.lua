@@ -1,25 +1,25 @@
+-- ~/.config/nvim/lua/custom/configs/lspconfig.lua
+
+-- Load NvChad's default LSP setup (keymaps, capabilities, etc.)
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "eslint", "tailwindcss", "ts_ls"}
+-- Get the on_attach and capabilities from NvChad for custom server configs
+local on_attach = require("nvchad.configs.lspconfig").on_attach
+local capabilities = require("nvchad.configs.lspconfig").capabilities
 
+-- Define custom configuration for the TypeScript/JavaScript server
+vim.lsp.config.ts_ls = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    preferences = {
+      disableSuggestions = true, -- Hides all suggestion diagnostics (like 'require' hints)
+    },
+  },
+}
+
+-- List of language servers to enable
+local servers = { "html", "cssls", "eslint", "tailwindcss", "ts_ls" }
+
+-- Enable all servers (ts_ls will use the config defined above)
 vim.lsp.enable(servers)
-
--- -- read :h vim.lsp.config for changing options of lsp servers 
-
--- Load NvChad's base LSP configurations
-
--- -- remove this down
--- require("nvchad.configs.lspconfig").defaults()
-
--- vim.lsp.config("ts_ls", {
---   init_options = {
---     preferences = {
---       -- This kills the "suggested" refactoring/code-action noise
---       disableSuggestions = true,
---     },
---   },
--- })
-
-
--- local servers = { "html", "cssls", "eslint", "tailwindcss", "ts_ls" }
--- vim.lsp.enable(servers)
