@@ -1,5 +1,5 @@
 ### My nvim/nvchad configuraion files
-- I use this configs on arch linux (BTW) to easily pull and install my light editor anywhere I go.
+- I use these configs on arch linux (BTW) to easily pull and install my light editor anywhere I go.
 
 **This repo is supposed to be used as config by NvChad users!**
 
